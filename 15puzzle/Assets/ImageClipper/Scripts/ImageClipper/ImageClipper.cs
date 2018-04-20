@@ -131,7 +131,9 @@ public class ImageClipper :MonoBehaviour{
 
     public void Clip()
     {
-        DisplayTex(ClipTex((Texture2D)this.rawImg.texture));
+        var tex = ClipTex((Texture2D)this.rawImg.texture);
+        DisplayTex(tex);
+        GameObject.Find("GameController").GetComponent<Spawner>().raw = tex;
     }
 
     // テクスチャをCanvasに表示
@@ -150,7 +152,7 @@ public class ImageClipper :MonoBehaviour{
             cs.matchWidthOrHeight = 1.0f;
         }
 
-        cs.referenceResolution = new Vector2(tex.width,tex.height);
+        //cs.referenceResolution = new Vector2(tex.width,tex.height);
         this.rawImg.GetComponent<RawImage>().texture = tex;
         RectTransform rect = this.rawImg.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(tex.width, tex.height);
