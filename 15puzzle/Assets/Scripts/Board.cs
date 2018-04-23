@@ -8,6 +8,10 @@ public class Board : MonoBehaviour
     public Panel[] Panels;
     [SerializeField, Range(3, 6)]
     private int puzzleSize;
+    public int GetPuzzleSize
+    {
+        get { return this.puzzleSize; }
+    }
     [SerializeField]
     private Spawner spawner;
 
@@ -141,7 +145,7 @@ public class Board : MonoBehaviour
             }
             info += '\n';
         }
-        Debug.Log(info);
+        //Debug.Log(info);
     }
 
     private bool IsMatched()
@@ -215,7 +219,7 @@ public class Board : MonoBehaviour
                 distance += moves;
             }
         }
-        print("distance : " + distance);
+        //print("distance : " + distance);
 
         return (distance % 2 == 0) ? true : false;
     }
